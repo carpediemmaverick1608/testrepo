@@ -1,1 +1,3 @@
-Hi this is a test file to be copied to jenkins
+storeIdentifier = 'NA-PCG-US'
+languageId = '1'
+catalogIdentifier = 'NA-PCG-CAS'
