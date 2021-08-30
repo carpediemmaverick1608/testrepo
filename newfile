@@ -1,3 +1,26 @@
-storeIdentifier = 'NA-PCG-US'
-languageId = '1'
-catalogIdentifier = 'NA-PCG-CAS'
+pipeline {
+    agent any
+    environment {
+        source_repo = 'https://github.com/carpediemmaverick1608/Newrepo'
+        source_path = 'testfile'
+        target_path = 'JENKINS_HOME/workspace/'
+        storeIdentifier = 'NA-PCG-US'
+        languageId = '1'
+        catalogIdentifier = 'NA-PCG-CAS'
+    }
+    stages {
+        // checkout
+        stage ("checkout") {
+            steps {
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/carpediemmaverick1608/Newrepo'
+            }
+        }
+        stage ("copy") {
+            steps {
+                 "${env.storeIdentifier}"
+                 "${env.languageId}"
+                 "${env.catalogIdentifier}"
+            }
+        }
+    }
+}
